@@ -6,9 +6,10 @@ Post.propTypes = {
 };
 
 function Post(props) {
+
   return (
    <div>
-      <p><a href={props.post.url}>{props.post.title}</a></p>
+      <p><a href={props.post.url}>{props.post.title}</a>  posted by {props.user}, score:{props.post.rate}</p>
    </div>
   );
 }

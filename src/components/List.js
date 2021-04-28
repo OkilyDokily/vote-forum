@@ -5,18 +5,20 @@ import Post from './Post'
 function mapStateToProps(state) {
   return {
     posts: state.posts,
-    ordered: Object.keys(state.posts).sort((a, b) => a - b)
+    users: state.users,
+    ordered: Object.keys(state.posts).sort((a, b) => a.rate - b.rate)
   };
 }
 
 class List extends Component {
+
   render() {
+    console.log(this.props.ordered);
     return (
       <div>
         {
           this.props.ordered.map(key => {
-            return <Post post={this.props.posts[key]} />
-          })
+            return <Post post={this.props.posts[key]} user={this.props.users[this.props.posts[key].userid].name} />})
         }
       </div>
     );
