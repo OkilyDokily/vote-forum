@@ -71,15 +71,15 @@ export default function reducer(state = defaultState
     case "VOTE":
       if (action.arrow === "up" && state.users[action.userid]?.vote !== "up") {
         state.posts[action.id].rate++;
-        state.users[action.userid].votes[action.id] = "up"
-        console.log(state)
-        return { ...state }
+        state.users[action.userid].votes[action.id] = "up";
+      
+        return {...state };
       }
       else if (action.arrow === "down" && state[action.id]?.vote !== "down") {
         state.posts[action.id].rate--;
-        state.users[action.userid].votes[action.id] = "down"
-        console.log(state)
-        return { ...state }
+        state.users[action.userid].votes[action.id] = "down";
+
+        return { ...state };
       }
       return state;
     default:

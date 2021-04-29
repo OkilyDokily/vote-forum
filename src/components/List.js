@@ -10,6 +10,8 @@ function mapStateToProps(state) {
   };
 }
 
+
+
 class List extends Component {
 
   render() {
@@ -17,13 +19,13 @@ class List extends Component {
       <div>
         {
           this.props.ordered.map(key => {
-            return <Post post={this.props.posts[key]} user={this.props.users[this.props.posts[key].userid].name} />})
+            console.log(key)
+            return <Post key={key}  post={this.props.posts[key]} user={this.props.users[this.props.posts[key].userid].name} />
+          })
         }
       </div>
     );
   }
 }
 
-export default connect(
-  mapStateToProps,
-)(List);
+export default connect(mapStateToProps)(List);
