@@ -32,9 +32,7 @@ export const defaultState = {
   users: {
     1: {
       name:"jan",
-      posts: {
-        1: ""
-      },
+      posts: [1],
       votes: {
         2: "up",
         3: "up",
@@ -43,9 +41,7 @@ export const defaultState = {
     },
     2: {
       name:"jill",
-      posts: {
-        2: "",
-      },
+      posts:[1],
       votes: {
         1: "up",
         3: "up",
@@ -54,10 +50,7 @@ export const defaultState = {
     },
     3: {
       name:"mark",
-      posts: {
-        3: "",
-        4: ""
-      },
+      posts: [3,4],
       votes: {
         1: "up",
         2: "down",
@@ -79,11 +72,13 @@ export default function reducer(state = defaultState
       if (action.arrow === "up" && state.users[action.userid]?.vote !== "up") {
         state.posts[action.id].rate++;
         state.users[action.userid].votes[action.id] = "up"
+        console.log(state)
         return { ...state }
       }
-      else if (action.arrow === "down" && state[action.id].vote !== "down") {
+      else if (action.arrow === "down" && state[action.id]?.vote !== "down") {
         state.posts[action.id].rate--;
         state.users[action.userid].votes[action.id] = "down"
+        console.log(state)
         return { ...state }
       }
       return state;

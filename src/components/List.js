@@ -6,14 +6,13 @@ function mapStateToProps(state) {
   return {
     posts: state.posts,
     users: state.users,
-    ordered: Object.keys(state.posts).sort((a, b) => a.rate - b.rate)
+    ordered: Object.keys(state.posts).sort((a, b) => state.posts[a].rate - state.posts[b].rate).reverse()
   };
 }
 
 class List extends Component {
 
   render() {
-    console.log(this.props.ordered);
     return (
       <div>
         {
