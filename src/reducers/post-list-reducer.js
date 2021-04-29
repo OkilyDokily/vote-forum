@@ -69,16 +69,16 @@ export default function reducer(state = defaultState
       state.users[action.userid].posts[action.id] = "";
       return { ...state }
     case "VOTE":
-      if (action.arrow === "up" && state.users[action.userid]?.vote !== "up") {
+      if (action.arrow === "up" && state.users[action.userid].votes[action.id] !== "up") {
         state.posts[action.id].rate++;
         state.users[action.userid].votes[action.id] = "up";
       
         return {...state };
       }
-      else if (action.arrow === "down" && state[action.id]?.vote !== "down") {
+      else if (action.arrow === "down" && state[action.id].votes[action.id] !== "down") {
         state.posts[action.id].rate--;
         state.users[action.userid].votes[action.id] = "down";
-
+      
         return { ...state };
       }
       return state;

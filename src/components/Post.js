@@ -8,10 +8,10 @@ Post.propTypes = {
 
 function Post(props) {
   const { post, user,dispatch } = props;
-  const { url, title, rate, id } = post;
+  const { url, title, id } = post;
   return (
     <div>
-      <p><a href={url}>{title}</a>  posted by {user}, score:{rate} and and id is {id}</p>
+      <p><a href={url}>{title}</a>  posted by {user}, score:{props.rate} and id is {id}</p>
       <button onClick={() => dispatch({ type: "VOTE", arrow: "up", id: id, userid: 1 })}>Up</button>
       <button onClick={() => dispatch({ type: "VOTE", arrow: "down", id: id, userid: 1 })}>Down</button>
     </div>

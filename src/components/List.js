@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Post from './Post'
+import Post from './Post';
+import PropTypes from 'prop-types';
+
+
 
 function mapStateToProps(state) {
   return {
@@ -10,22 +13,23 @@ function mapStateToProps(state) {
   };
 }
 
-
-
 class List extends Component {
-
   render() {
     return (
       <div>
         {
           this.props.ordered.map(key => {
-            console.log(key)
-            return <Post key={key}  post={this.props.posts[key]} user={this.props.users[this.props.posts[key].userid].name} />
+            return <Post key={key } rate={this.props.posts[key].rate}  post={this.props.posts[key]} user={this.props.users[this.props.posts[key].userid].name} />
           })
         }
       </div>
     );
   }
 }
+
+List.propTypes = {
+  posts: PropTypes.object,
+  users: PropTypes.object
+};
 
 export default connect(mapStateToProps)(List);
