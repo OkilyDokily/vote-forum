@@ -61,25 +61,34 @@ export const defaultState = {
 
 
 
+
 export default function reducer(state = defaultState
 , action) {
+
+  function returnVote(direction, result) {
+    const newRate = state.posts[action.id].rate + direction;
+    const votes = state.users[action.userid].votes;
+
+    return { posts: { ...state.posts, [action.id]: { ...state.posts[action.id], rate: newRate } }, users: { ...state.users, [action.userid]: { ...state.users[action.userid], votes: { ...votes, [action.id]: result } } } };
+  }
+
   switch (action.type) {
     case "ADD":
       state.posts[action.id] = { title: action.title, url: action.url, id: action.id, rate: 0, userid: action.userid };
       state.users[action.userid].posts[action.id] = "";
       return { ...state }
     case "VOTE":
-      if (action.arrow === "up" && state.users[action.userid].votes[action.id] !== "up") {
-        state.posts[action.id].rate++;
-        state.users[action.userid].votes[action.id] = "up";
-      
-        return {...state };
+      if (action.arrow === "up" && state.users[action.userid].votes[action.id] === "down"){
+        return returnVote(1,undefined);
       }
-      else if (action.arrow === "down" && state[action.id].votes[action.id] !== "down") {
-        state.posts[action.id].rate--;
-        state.users[action.userid].votes[action.id] = "down";
-      
-        return { ...state };
+      else if (action.arrow === "down" && state.users[action.userid].votes[action.id] === "up") {
+        return returnVote(-1,undefined);
+      }
+      else if (action.arrow === "up" && state.users[action.userid].votes[action.id] !== "up") {
+        return returnVote(1, "up");
+      }
+      else if (action.arrow === "down" && state.users[action.userid].votes[action.id] !== "down") {
+        return returnVote(-1, "down");
       }
       return state;
     default:
