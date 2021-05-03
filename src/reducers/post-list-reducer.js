@@ -1,32 +1,37 @@
 export const defaultState = {
+  loggedIn:1,
   posts: {
     1: {
       id: 1,
       title: "Google",
       url: "google.com",
       userid: 1,
-      rate: 3
+      rate: 3,
+      date:new Date()
     },
     2: {
       id: 2,
       title: "Alta Vista",
       url: "altavista.com",
       userid: 2,
-      rate: -3
+      rate: -3,
+      date: new Date()
     },
     3: {
       id: 3,
       title: "Lycos",
       url: "lycos.com",
       userid: 3,
-      rate: 2
+      rate: 2,
+      date: new Date()
     },
     4: {
       id: 4,
       title: "Ask Jeeves",
       url: "askjeeves.com",
       userid: 3,
-      rate: 5
+      rate: 5,
+      date: new Date()
     }
   },
   users: {
@@ -60,8 +65,6 @@ export const defaultState = {
 }
 
 
-
-
 export default function reducer(state = defaultState
 , action) {
 
@@ -74,7 +77,7 @@ export default function reducer(state = defaultState
 
   switch (action.type) {
     case "ADD":
-      state.posts[action.id] = { title: action.title, url: action.url, id: action.id, rate: 0, userid: action.userid };
+      state.posts[action.id] = { title: action.title, url: action.url, id: action.id, rate: 0, date:action.date, userid: action.userid };
       state.users[action.userid].posts[action.id] = "";
       return { ...state }
     case "VOTE":

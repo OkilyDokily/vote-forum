@@ -1,11 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {v4} from 'uuid';
-
-Form.propTypes = {
-  
-};
 
 function Form(props) {
 
@@ -13,7 +8,7 @@ function Form(props) {
     e.preventDefault();
     const title = document.getElementById("title").value;
     const url = document.getElementById("url").value;
-    props.dispatch({ type: "ADD", url: url, title:title, id:v4(),userid:1})
+    props.dispatch({ type: "ADD", url: url, title:title, id:v4(),userid:1, date:new Date()})
     props.changeView("default")
   }
   return (
@@ -30,5 +25,6 @@ function Form(props) {
     </form>
   );
 }
+
 
 export default connect()(Form);

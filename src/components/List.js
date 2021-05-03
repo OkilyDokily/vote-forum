@@ -7,9 +7,10 @@ import PropTypes from 'prop-types';
 
 function mapStateToProps(state) {
   return {
-    posts: state.posts.posts,
-    users: state.posts.users,
-    ordered: Object.keys(state.posts.posts).sort((a, b) => state.posts.posts[a].rate - state.posts.posts[b].rate).reverse()
+    posts: state.business.posts,
+    users: state.business.users,
+    loggedIn:state.business.loggedIn,
+    ordered: Object.keys(state.business.posts).sort((a, b) => state.business.posts[a].rate - state.business.posts[b].rate).reverse()
   };
 }
 
@@ -18,10 +19,10 @@ class List extends Component {
     return (
       <div>
         {
+      
           this.props.ordered.map(key => {
-            return <Post key={key } userVote={this.props.users[1].votes[key]}  post={this.props.posts[key]} postedby={this.props.users[this.props.posts[key].userid].name} />
-          })
-          
+            return <Post loggedIn={this.props.loggedIn} key={key} userVote={this.props.users[this.props.loggedIn].votes[key]}  post={this.props.posts[key]} postedby={this.props.users[this.props.posts[key].userid]} />
+          })    
         }
       </div>
     );

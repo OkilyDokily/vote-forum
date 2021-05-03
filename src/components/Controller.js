@@ -3,6 +3,7 @@ import Form from './Form'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import UserDetails from "./UserDetails";
+import PropTypes from 'prop-types';
 
 function mapStateToProps(state) {
   return {
@@ -35,8 +36,8 @@ class Controller extends Component {
       case "user-details":
           return(
             <div>
-              <UserDetails />
-              <button onClick={() => this.switch("default")}>Go back to list</button>
+              <UserDetails/>
+              <button onClick={() => dispatch({ type: "VIEW", view: "default" })}>Go back to list</button>
             </div>
           )
       default:
@@ -44,6 +45,11 @@ class Controller extends Component {
     }  
   }
 }
+
+Controller.propTypes = {
+  view:PropTypes.string,
+  userDetails: PropTypes.object,
+};
 
 export default connect(
   mapStateToProps,

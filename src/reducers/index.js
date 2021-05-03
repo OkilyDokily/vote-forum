@@ -3,7 +3,7 @@ import postListReducer from './post-list-reducer';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-  posts: postListReducer,
+  business: postListReducer,
   interface: interfaceReducer
 });
 
