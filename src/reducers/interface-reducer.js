@@ -3,7 +3,7 @@ export default function reducer (state = {view:"default",userDetails:undefined},
     case 'VIEW':
       return {...state,view:action.view};
     case 'USERDETAILS':
-      return {...state,userdetails:action.user};
+      return {...state,userDetails:action.user};
     default:
       return state;
   }

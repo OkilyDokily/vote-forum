@@ -19,7 +19,6 @@ class List extends Component {
     return (
       <div>
         {
-      
           this.props.ordered.map(key => {
             return <Post loggedIn={this.props.loggedIn} key={key} userVote={this.props.users[this.props.loggedIn].votes[key]}  post={this.props.posts[key]} postedby={this.props.users[this.props.posts[key].userid]} />
           })    

@@ -6,10 +6,11 @@ function Form(props) {
 
   function submit(e) {
     e.preventDefault();
+    const { dispatch } = props;
     const title = document.getElementById("title").value;
     const url = document.getElementById("url").value;
-    props.dispatch({ type: "ADD", url: url, title:title, id:v4(),userid:1, date:new Date()})
-    props.changeView("default")
+    dispatch({ type: "ADD", url: url, title:title, id:v4(),userid:1, date:new Date()})
+    dispatch({type:"VIEW",view:"default"});
   }
   return (
     <form onSubmit={submit}>

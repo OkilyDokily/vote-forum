@@ -1,13 +1,13 @@
 export const defaultState = {
-  loggedIn:1,
+  loggedIn: 1,
   posts: {
     1: {
       id: 1,
       title: "Google",
       url: "google.com",
       userid: 1,
-      rate: 3,
-      date:new Date()
+      rate: 3, 
+      date: new Date('December 17, 1995 03:24:00')
     },
     2: {
       id: 2,
@@ -15,29 +15,29 @@ export const defaultState = {
       url: "altavista.com",
       userid: 2,
       rate: -3,
-      date: new Date()
+      date: new Date('December 17, 1995 03:24:00')
     },
     3: {
       id: 3,
       title: "Lycos",
       url: "lycos.com",
       userid: 3,
-      rate: 2,
-      date: new Date()
+      rate: 2, 
+      date: new Date('December 17, 1995 03:24:00')
     },
     4: {
       id: 4,
       title: "Ask Jeeves",
       url: "askjeeves.com",
       userid: 3,
-      rate: 5,
-      date: new Date()
+      rate: 5, 
+      date: new Date('December 17, 1995 03:24:00')
     }
   },
   users: {
     1: {
-      name:"jan",
-      posts: [1],
+      name: "jan",
+      posts: [2],
       votes: {
         2: "up",
         3: "up",
@@ -45,8 +45,8 @@ export const defaultState = {
       }
     },
     2: {
-      name:"jill",
-      posts:[1],
+      name: "jill",
+      posts: [1],
       votes: {
         1: "up",
         3: "up",
@@ -54,8 +54,8 @@ export const defaultState = {
       }
     },
     3: {
-      name:"mark",
-      posts: [3,4],
+      name: "mark",
+      posts: [3, 4],
       votes: {
         1: "up",
         2: "down",
@@ -66,26 +66,25 @@ export const defaultState = {
 
 
 export default function reducer(state = defaultState
-, action) {
+  , action) {
 
   function returnVote(direction, result) {
     const newRate = state.posts[action.id].rate + direction;
     const votes = state.users[action.userid].votes;
 
-    return { posts: { ...state.posts, [action.id]: { ...state.posts[action.id], rate: newRate } }, users: { ...state.users, [action.userid]: { ...state.users[action.userid], votes: { ...votes, [action.id]: result } } } };
+    return {loggedIn:1, posts: { ...state.posts, [action.id]: { ...state.posts[action.id], rate: newRate } }, users: { ...state.users, [action.userid]: { ...state.users[action.userid], votes: { ...votes, [action.id]: result } } } };
   }
 
   switch (action.type) {
     case "ADD":
-      state.posts[action.id] = { title: action.title, url: action.url, id: action.id, rate: 0, date:action.date, userid: action.userid };
-      state.users[action.userid].posts[action.id] = "";
-      return { ...state }
+      const statePost = { title: action.title, url: action.url, rate: 0, userid: action.userid, id: action.id, date:action.date };
+      return { loggedIn: 1, posts: { ...state.posts, [action.id]: statePost }, users: { ...state.users}}
     case "VOTE":
-      if (action.arrow === "up" && state.users[action.userid].votes[action.id] === "down"){
-        return returnVote(1,undefined);
+      if (action.arrow === "up" && state.users[action.userid].votes[action.id] === "down") {
+        return returnVote(1, undefined);
       }
       else if (action.arrow === "down" && state.users[action.userid].votes[action.id] === "up") {
-        return returnVote(-1,undefined);
+        return returnVote(-1, undefined);
       }
       else if (action.arrow === "up" && state.users[action.userid].votes[action.id] !== "up") {
         return returnVote(1, "up");
