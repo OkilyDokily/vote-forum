@@ -1,0 +1,51 @@
+.App {
+  width: 33%;
+  margin:auto;
+}
+
+body{
+  background-color: white;
+}
+
+.post{
+   background-color: cornsilk;
+}
+
+input{
+  outline: none;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.details{
+  cursor:pointer;
+  color:blue;
+}
+
+button{
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.up.up2{
+  background-color: rgb(243, 180, 157);
+}
+
+.down.down2{
+  background-color: rgb(130, 130, 187);
+}
+
+.small{
+  font-size: 12px;
+}
+
+.rate{
+  float:left;
+ margin-right: 10px;
+ font-size: 20px;
+}
+
+.vote-buttons{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
