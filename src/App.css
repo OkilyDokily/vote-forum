@@ -4,7 +4,7 @@
 }
 
 body{
-  background-color: white;
+  background-color: rgb(218, 204, 204);
 }
 
 .post{
@@ -22,8 +22,19 @@ input{
   color:blue;
 }
 
-button{
+button,input{
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+button,input {
+  background-color: #f1f5d9; /* Green */
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .up.up2{
@@ -49,3 +60,19 @@ button{
   flex-direction:column;
   justify-content:center;
 }
+
+.vote-buttons:hover{
+  cursor:pointer;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+button:hover,input:hover{
+  cursor: pointer;
+}
+

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 function Post(props) {
-  const { post, postedby, userVote, dispatch, loggedIn } = props;
+  const { post, postedby, userVote, dispatch} = props;
   const { url, title, rate, id, date } = post;
 
   const styles = {
     display:"flex",
-    border: "1px solid red",
+    border: "1px solid #f5dce3",
     backGroundColor: '#f5f2e9',
     padding: "10px",
     marginBottom: "10px"

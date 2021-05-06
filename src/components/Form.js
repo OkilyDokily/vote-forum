@@ -6,10 +6,23 @@ function Form(props) {
 
   const styles = {
     display: "flex",
-    border: "1px solid red",
+    border: "1px solid #f7d5d6",
     backGroundColor: '#f5f2e9',
     padding: "10px",
-    marginBottom: "10px"
+    marginBottom: "10px",
+    flexDirection:"column",
+    borderRadius: "15px"
+  }
+
+  const inputStyle = {
+    height: "55px",
+    marginLeft:"0",
+    marginTop: "25px",
+    borderRadius: "15px"
+  }
+
+  const inputColor = {
+    backgroundColor: "#ede4e6"
   }
 
 
@@ -22,16 +35,17 @@ function Form(props) {
     dispatch({type:"VIEW",view:"default"});
   }
   return (
-    <form onSubmit={submit} style={styles}>
+    <form class="wpforms-container wpforms-container-full" id="wpforms-14" onSubmit={submit} style={styles}>
       <div>
         <label>Title:</label>
-        <input id="title" type="text" placeholder="title"/>
+        <input style={inputColor} id="title" type="text" placeholder="title" required/>
       </div>
+      <br/>
       <div>
         <label>Url:</label>
-        <input id="url" type="text" placeholder="url" />
+        <input style={inputColor} id="url" type="text" placeholder="url" required/>
       </div>
-      <input type="submit" value="POST"/>
+      <input style={inputStyle} type="submit" value="POST"/>
     </form>
   );
 }

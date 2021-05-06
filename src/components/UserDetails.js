@@ -17,10 +17,22 @@ function UserDetails(props) {
     marginBottom: "10px"
   }
 
+  const userVotes ={
+    borderBottom:"solid 1px black",
+    width: "30%"
+  }
+
+  const userPosts = {
+    borderBottom: "solid 1px black",
+    width: "30%"
+  }
+
+
   return (
     <div style={styles}>
-      <h1>{props.userdetails.name}</h1>
-      <p>Users Posts</p>
+      <h1>User Details</h1>
+      <h2>{props.userdetails.name}</h2>
+      <p style={userPosts}>Users Posts</p>
       
       {props.userdetails.posts.map(key => {
         return (<div key={key}>
@@ -28,11 +40,11 @@ function UserDetails(props) {
         </div>)
       })}
 
-      <p>User votes</p>
+      <p style={userVotes}>Likes</p>
       
-      {Object.keys(props.userdetails.votes).map(key => {
+      {Object.keys(props.userdetails.votes).filter(key => (props.userdetails.votes[key] === "up")).map(key => {
         return (key !== undefined) ? (<div key={key}>
-          <p> {props.userdetails.votes[key]} for  <a href={props.posts[key].url}>{props.posts[key].title}</a> </p>
+          <a href={props.posts[key].url}>{props.posts[key].title}</a> 
         </div>) : null;
       })}
     </div>
